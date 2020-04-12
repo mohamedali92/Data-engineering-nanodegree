@@ -31,9 +31,12 @@ Otherwise when you create a new container using the old mount it will use the ol
 
 - Verify by running the `test.ipynb` notebook that tables were created successfully
 
-- Run the `etl.py` script:
+- Run the `etl.py` script to run the etl and populate the tables:
 
         python etl.py
         
 # Schema
+This project uses a traditional star schema to represent the data. 
+`songplays` are the facts surrounded by various entites that project in depth information about each song play.
+
 ![schema](https://github.com/mohamedali92/data-engineering-nanodegree/blob/master/1-data-modeling/p1-data-modeling-with-postgres/star-schema.png)   
