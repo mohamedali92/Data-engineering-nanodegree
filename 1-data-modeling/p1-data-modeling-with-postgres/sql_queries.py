@@ -12,14 +12,14 @@ songplay_table_create = ("""
 create table if not exists songplays
 (
     songplay_id serial primary key,
-    start_time timestamp,
-    user_id varchar(64),
+    start_time timestamp references time,
+    user_id varchar(64) references users,
     level varchar(10),
-    song_id varchar(64),
-    artist_id varchar(64),
-    session_id int,
+    song_id varchar(64) references songs,
+    artist_id varchar(64) references artists,
+    session_id int not null,
     location  varchar(128),
-    user_agent varchar(256)
+    user_agent varchar(256) not null 
 );
 """)
 
@@ -27,8 +27,8 @@ user_table_create = ("""
 create table if not exists users
 (
     user_id    varchar(64) primary key,
-    first_name varchar(64),
-    last_name  varchar(64),
+    first_name varchar(64) not null ,
+    last_name  varchar(64) not null,
     gender     varchar(1),
     level      varchar(10)
 );
@@ -38,10 +38,10 @@ song_table_create = ("""
 create table if not exists songs
 (
     song_id   varchar(64) primary key,
-    title     varchar(64),
-    artist_id varchar(64),
+    title     varchar(64) not null,
+    artist_id varchar(64) references artists,
     year      int,
-    duration  float4
+    duration  float4 not null
 );
 """)
 
@@ -49,7 +49,7 @@ artist_table_create = ("""
 create table if not exists artists
 (
     artist_id varchar(64) primary key,
-    name      varchar(64),
+    name      varchar(128) not null,
     location  varchar(128),
     latitude  float4,
     longitude float4
@@ -78,23 +78,27 @@ values (%s, %s, %s, %s, %s, %s, %s, %s);
 
 user_table_insert = ("""
 insert into users (user_id, first_name, last_name, gender, level) 
-values (%s, %s, %s, %s, %s);
+values (%s, %s, %s, %s, %s)
+on conflict (user_id) do update set level = excluded.level;
 """)
 
 song_table_insert = ("""
 insert into songs (song_id, title, artist_id, year, duration)
-values (%s, %s, %s, %s, %s);
+values (%s, %s, %s, %s, %s)
+on conflict (song_id) do nothing;
 """)
 
 artist_table_insert = ("""
 insert into artists (artist_id, name, location, latitude, longitude)
-values (%s, %s, %s, %s, %s);
+values (%s, %s, %s, %s, %s)
+on conflict (artist_id) do nothing;
 """)
 
 
 time_table_insert = ("""
 insert into time (start_time, hour, day, week, month, year, weekday)
-values (%s, %s, %s, %s, %s, %s, %s);
+values (%s, %s, %s, %s, %s, %s, %s)
+on conflict (start_time) do nothing;
 """)
 
 # FIND SONGS
@@ -111,5 +115,7 @@ where s.title = %s
 
 # QUERY LISTS
 
-create_table_queries = [songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
-drop_table_queries = [songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
+create_table_queries = (songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create)
+
+create_table_queries = (user_table_create,  artist_table_create, time_table_create, song_table_create, songplay_table_create)
+drop_table_queries = (user_table_drop,  artist_table_drop, time_table_drop, song_table_drop, songplay_table_drop)
