@@ -36,4 +36,4 @@ Otherwise when you create a new container using the old mount it will use the ol
         python etl.py
         
 # Schema
-   
+![schema](https://github.com/mohamedali92/data-engineering-nanodegree/blob/master/1-data-modeling/p1-data-modeling-with-postgres/star-schema.png)   
