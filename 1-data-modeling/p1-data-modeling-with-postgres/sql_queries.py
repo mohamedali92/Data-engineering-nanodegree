@@ -12,11 +12,11 @@ songplay_table_create = ("""
 create table if not exists songplays
 (
     songplay_id serial primary key,
-    start_time timestamp references time,
-    user_id varchar(64) references users,
+    start_time timestamp references time(start_time),
+    user_id varchar(64) references users(user_id),
     level varchar(10),
-    song_id varchar(64) references songs,
-    artist_id varchar(64) references artists,
+    song_id varchar(64) references songs(song_id),
+    artist_id varchar(64) references artists(artist_id),
     session_id int not null,
     location  varchar(128),
     user_agent varchar(256) not null 
@@ -39,7 +39,7 @@ create table if not exists songs
 (
     song_id   varchar(64) primary key,
     title     varchar(64) not null,
-    artist_id varchar(64) references artists,
+    artist_id varchar(64) references artists(artist_id),
     year      int,
     duration  float4 not null
 );

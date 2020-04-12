@@ -30,3 +30,10 @@ Otherwise when you create a new container using the old mount it will use the ol
         python create_tables.py
 
 - Verify by running the `test.ipynb` notebook that tables were created successfully
+
+- Run the `etl.py` script:
+
+        python etl.py
+        
+# Schema
+   
