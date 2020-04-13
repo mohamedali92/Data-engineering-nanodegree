@@ -24,17 +24,18 @@ These instructions will get you a copy of the project up and running on your loc
         
         pip install -r requirements.txt
 
-```
-Give the example
-```
+- Setup a local cassandra docker container using the provided script, this is to create an isolated environment for the project without polluting the host system
 
-And repeat
+        . ./setup_cassandra_using_docker.sh
+        
+   or 
+   
+        . ./setup_cassandra_using_docker.sh DEFAULTPASSWORD
+        
+- Use the provided `cassandra-secrets-template.yaml` and update the username and password to provide the authentication details to access the local cassandra instance. 
+ Then rename the file by removing the `-template` since thats the name the jupyter notebook is using:
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+        mv cassandra-secrets-template.yaml  cassandra-secrets.yaml
 
 ## Running the tests
 
