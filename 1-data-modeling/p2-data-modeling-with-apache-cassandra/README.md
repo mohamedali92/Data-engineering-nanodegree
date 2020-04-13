@@ -10,7 +10,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+- Docker
+- Python3
+- virtualenv package
 
 ```
 Give examples
@@ -18,9 +20,13 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+- Create and activate a new Python3 virtualenv. This allows us to use local isolated python interpreter without polluting the global interpreter with many packages.
 
-Say what the step will be
+        virtualenv -p python3 p2-data-modeling-with-apache-cassandra
+        source p2-data-modeling-with-apache-cassandra/bin/activate
+- Install the necessary packages. These packages are used in the various python scripts below and in the jupyter notebooks.
+        
+        pip install -r requirements.txt
 
 ```
 Give the example
