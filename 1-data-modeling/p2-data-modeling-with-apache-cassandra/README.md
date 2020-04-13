@@ -14,10 +14,6 @@ These instructions will get you a copy of the project up and running on your loc
 - Python3
 - virtualenv package
 
-```
-Give examples
-```
-
 ### Installing
 
 - Create and activate a new Python3 virtualenv. This allows us to use local isolated python interpreter without polluting the global interpreter with many packages.
