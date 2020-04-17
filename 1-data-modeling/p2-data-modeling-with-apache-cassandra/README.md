@@ -6,8 +6,7 @@ The goal of the project is to model data using Apache Cassandra and complete an 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 ### Prerequisites
 
 - Docker
@@ -37,4 +36,4 @@ These instructions will get you a copy of the project up and running on your loc
 
         mv cassandra-secrets-template.yaml  cassandra-secrets.yaml
 
-- Run the Project_1B_Project_Template notebook to process the raw data, model it and insert & query it using Cassandra
+- Run the `Project_1B_Project_Template` notebook to process the raw data, model it and insert & query it using Cassandra
