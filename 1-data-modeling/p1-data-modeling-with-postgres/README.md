@@ -40,3 +40,8 @@ This project uses a traditional star schema to represent the data.
 `songplays` are the facts surrounded by various entites that project in depth information about each song play.
 
 ![schema](https://github.com/mohamedali92/data-engineering-nanodegree/blob/master/1-data-modeling/p1-data-modeling-with-postgres/star-schema.png)   
+
+
+### Potential Future additions
+- [ ] Build a GraphQl engine on top of the data in postgres using ![Hasura](https://hasura.io/) 
+- [ ] Build an analytics dashboard using ![Superset](https://superset.apache.org/) 
