@@ -37,3 +37,7 @@ These instructions will get you a copy of the project up and running on your loc
         mv cassandra-secrets-template.yaml  cassandra-secrets.yaml
 
 - Run the `Project_1B_Project_Template` notebook to process the raw data, model it and insert & query it using Cassandra
+
+
+### Potential Future additions
+- [ ] Enable CDC in Cassandra and build a streaming pipeline 
